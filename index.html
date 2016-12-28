@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>??—ç•¨?‘—?”d</title>
+    <style>
+        html, body {
+                                height: 100%;
+                                margin: 0;
+                                padding: 0;
+                        }
+        .cr{
+            width: 100%;
+            position: relative;
+            background: url("http://cdn.attach.qdfuns.com/notes/pics/201612/15/174106gbm3famm0piq62mm.png") no-repeat 0 0;
+            -webkit-background-size: 100% 100%;
+            background-size: 100% 100%;
+            overflow: hidden;
+        }
+        .cr-l,.cr-r{
+            position: absolute;
+            bottom:10%;
+            width: 20.8%;
+            height: 70%;
+            z-index:100;
+        }
+        .cr-l img,.cr-r img{
+            width: 100%;
+            position: absolute;
+            top:50%;
+        }
+        .cr-l{
+            left: 0;
+        }
+        .cr-r{
+            right:0;
+        }
+        .cr-icon{
+            bottom: 15%;
+            left:0;
+            position: absolute;
+            z-index: 1000;
+            width: 100%;
+            height: 70%;
+            text-align: center;
+        }
+        .cr-icon img{
+            margin-right: 25px;
+            width: 10%;
+            vertical-align: top;
+            position: absolute;
+            bottom: 0;
+            opacity: 1;
+            transform:rotate(0deg);
+            transition: all 1s;
+        }
+        .cr-icon img:first-child{
+            transform:rotate(-90deg);
+            -webkit-transform:rotate(-90deg);
+            opacity: 0;
+            width: 0;
+        }
+        .cr-icon img:last-child{
+            transform:rotate(90deg);
+            -webkit-transform:rotate(90deg);
+            opacity: 0;
+            width: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="cr">
+        <div class="cr-l"><img src="http://cdn.attach.qdfuns.com/notes/pics/201612/15/174103o5zx1pzh4x1ccpcb.png" alt=""/></div>
+        <div class="cr-icon">
+            <div id="cr-icon">
+                <img style="left:5%" src="http://cdn.attach.qdfuns.com/notes/pics/201612/15/174103e22y4zbkhi47bi2w.png" alt=""/>
+                <img style="left:25%" src="http://cdn.attach.qdfuns.com/notes/pics/201612/15/174103e22y4zbkhi47bi2w.png" alt=""/>
+                <img style="left:45%" src="http://cdn.attach.qdfuns.com/notes/pics/201612/15/174103e22y4zbkhi47bi2w.png" alt=""/>
+                <img style="left:65%" src="http://cdn.attach.qdfuns.com/notes/pics/201612/15/174103e22y4zbkhi47bi2w.png" alt=""/>
+                <img style="left:85%" src="http://cdn.attach.qdfuns.com/notes/pics/201612/15/174103e22y4zbkhi47bi2w.png" alt=""/>
+            </div>
+        </div>
+        <div class="cr-r"><img src="http://cdn.attach.qdfuns.com/notes/pics/201612/15/174103dz0uhvec7nbunqwc.png" alt=""/></div>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        $(".cr-icon img").click(function(){
+            if($(this).attr("src") == "http://cdn.attach.qdfuns.com/notes/pics/201612/15/174103e22y4zbkhi47bi2w.png"){
+                $(this).attr("src","http://cdn.attach.qdfuns.com/notes/pics/201612/15/174103ciomobruzrkbhhs5.png");
+            }else{
+                $(this).attr("src","http://cdn.attach.qdfuns.com/notes/pics/201612/15/174103e22y4zbkhi47bi2w.png");
+            }
+
+        });
+
+        $(function() {
+            var end = document.body.clientWidth;
+            var height = document.body.scrollHeight;
+            $(".cr").css("height",height);
+            function scrollLogo() {
+                $("#cr-icon img").each(function () {
+                    var left = parseInt($(this).css("left"));
+                    left += end * 0.2;
+                    $(this).css("left", left + "px");
+                });
+                $("#cr-icon img:last").insertBefore($("#cr-icon img:first")).css("left", document.body.clientWidth * 0.05).fadeIn();
+            }
+            setTimeout(scrollLogo,0);
+            var scroll = setInterval(scrollLogo, 1500);
+            $("#cr-icon img").mouseenter(function () {
+                clearInterval(scroll);
+            });
+            $("#cr-icon img").mouseleave(function () {
+                scroll = setInterval(scrollLogo, 1500);
+            });
+        });
+    </script>
+
+</body>
+</html>
